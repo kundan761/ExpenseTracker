@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { TextField, Button, Container, Box, FormControlLabel, Checkbox, Link, Card, CardContent } from '@material-ui/core';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+// import { TextField, Button, Container, Box, FormControlLabel, Checkbox, Link, Card, CardContent } from '@material-ui/core';
+import { Link, Link as RouterLink, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Box, Button, Card, CardContent, Checkbox, Container, FormControlLabel, TextField } from '@mui/material';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
-    agreed: false
+    agreed: false,
+    data:[]
   });
 
   const handleChange = (e) => {
@@ -33,7 +35,7 @@ const Signup = () => {
       return;
     }
     try {
-      await axios.post('http://localhost:3001/users', user);
+      await axios.post('https://expensetracker-32wt.onrender.com/users', user);
       toast.success('Sign up successful!');
       setTimeout(() => {
         navigate('/login');
@@ -42,7 +44,8 @@ const Signup = () => {
         name: '',
         email: '',
         password: '',
-        agreed: false
+        agreed: false,
+        data:[]
       });
     } catch (error) {
       console.error('Sign up failed:', error);
