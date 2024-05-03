@@ -18,7 +18,7 @@ const Dashboard = () => {
     }
 
     // Redirect to /dashboard/tracker if on /dashboard
-    if (location.pathname === '/dashboard') {
+    if (location.pathname === '/dashboard/*') {
       navigate('/dashboard/tracker');
     }
   }, [user, navigate, location]);
@@ -33,7 +33,7 @@ const Dashboard = () => {
         </Box>
         <Routes>
           <Route path="tracker" element={<Tracker />} />
-          <Route path="analytics" element={<Analytics />} />
+          <Route path="analytics" element={<Analytics userId={user?.id}/>} />
           <Route path="history" element={<History userId={user?.id} />} />
         </Routes>
       </Box>

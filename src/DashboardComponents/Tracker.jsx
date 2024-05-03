@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Button, Card, CardContent, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
-// import { TextField, Button, Select, MenuItem, InputLabel, FormControl, Card, CardContent, Typography } from '@material-ui/core';
 
 const Tracker = () => {
   const [form, setForm] = useState({
@@ -27,6 +26,13 @@ const Tracker = () => {
     try {
       await axios.post(`https://expensetracker-32wt.onrender.com/users/${user.id}/data`, userWithIdAndTransactionID);
       alert('Data saved successfully!');
+      // Clear the form after successful submission
+      setForm({
+        type: '',
+        category: '',
+        amount: '',
+        date: ''
+      });
     } catch (error) {
       console.error('Error saving data:', error);
     }
@@ -46,14 +52,14 @@ const Tracker = () => {
           Expense Tracker
         </Typography>
         <form onSubmit={handleSubmit}>
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ marginBottom: 20 }}>
             <InputLabel>Type</InputLabel>
             <Select name="type" value={form.type} onChange={handleChange}>
               <MenuItem value="Income">Income</MenuItem>
               <MenuItem value="Expense">Expense</MenuItem>
             </Select>
           </FormControl>
-          <FormControl fullWidth>
+          <FormControl fullWidth style={{ marginBottom: 20 }}>
             <InputLabel>Category</InputLabel>
             <Select name="category" value={form.category} onChange={handleChange}>
               {categories.map(category => (
@@ -61,9 +67,9 @@ const Tracker = () => {
               ))}
             </Select>
           </FormControl>
-          <TextField name="amount" value={form.amount} onChange={handleChange} label="Amount in Rupees" fullWidth />
-          <TextField name="date" value={form.date} onChange={handleChange} label="Date" type="date" fullWidth InputLabelProps={{ shrink: true }} />
-          <Button type="submit" variant="contained" color="primary" style={{ marginTop: 20 }}>Create</Button>
+          <TextField name="amount" value={form.amount} onChange={handleChange} label="Amount in Rupees" fullWidth style={{ marginBottom: 20 }} />
+          <TextField name="date" value={form.date} onChange={handleChange} label="Date" type="date" fullWidth InputLabelProps={{ shrink: true }} style={{ marginBottom: 20 }} />
+          <Button type="submit" variant="contained" color="primary">Create</Button>
         </form>
       </CardContent>
     </Card>

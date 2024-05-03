@@ -32,6 +32,7 @@ const EditTransactionModal = ({ open, handleClose, transaction, handleEdit }) =>
           value={editedTransaction.category || ''}
           onChange={handleChange}
           fullWidth
+          style={{ marginBottom: 20, marginTop:10 }} // Add margin bottom
         />
         <TextField
           name="type"
@@ -39,6 +40,7 @@ const EditTransactionModal = ({ open, handleClose, transaction, handleEdit }) =>
           value={editedTransaction.type || ''}
           onChange={handleChange}
           fullWidth
+          style={{ marginBottom: 20 }} // Add margin bottom
         />
         <TextField
           name="amount"
@@ -46,6 +48,7 @@ const EditTransactionModal = ({ open, handleClose, transaction, handleEdit }) =>
           value={editedTransaction.amount || ''}
           onChange={handleChange}
           fullWidth
+          style={{ marginBottom: 20 }} // Add margin bottom
         />
         <TextField
           name="date"
@@ -55,6 +58,7 @@ const EditTransactionModal = ({ open, handleClose, transaction, handleEdit }) =>
           onChange={handleChange}
           fullWidth
           InputLabelProps={{ shrink: true }}
+          style={{ marginBottom: 20 }} // Add margin bottom
         />
       </DialogContent>
       <DialogActions>

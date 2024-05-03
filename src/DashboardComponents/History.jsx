@@ -1,54 +1,56 @@
-/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteIcon from '@mui/icons-material/Clear';
 import EditTransactionModal from './EditTransaction';
 import { Card, CardContent, IconButton, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles'; 
+import { styled } from '@mui/system'; 
 
-const useStyles = makeStyles((theme) => ({
-  mainContainer: {
-    width: '80%',
-    margin: 'auto',
-  },
-  sortContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: theme.spacing(3), 
-    paddingLeft: theme.spacing(2), 
-    paddingRight: theme.spacing(2), 
-  },
-  mainCard: {
-    width: '100%', // Change to 100%
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    padding: theme.spacing(2),
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    marginBottom: theme.spacing(2),
-  },
-  transactionCard: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: theme.spacing(2),
-    padding: theme.spacing(2),
-    borderRadius: 10,
-    boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    backgroundColor: 'white',
-  },
-  transactionDetails: {
-    flex: 1,
-  },
-  amountContainer: {
-    textAlign: 'right',
-    minWidth: '98px',
-    marginRight: '3px', 
-  },
+const MainContainer = styled('div')({
+  width: '80%',
+  margin: 'auto',
+});
+
+const SortContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'center',
+  marginBottom: theme.spacing(3), 
+  paddingLeft: theme.spacing(2), 
+  paddingRight: theme.spacing(2), 
 }));
 
+const MainCard = styled(Card)(({ theme }) => ({
+  width: '100%',
+  backgroundColor: '#f0f0f0',
+  borderRadius: 10,
+  padding: theme.spacing(2),
+  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+  marginBottom: theme.spacing(2),
+}));
+
+const TransactionCard = styled(Card)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  marginBottom: theme.spacing(2),
+  padding: theme.spacing(2),
+  borderRadius: 10,
+  boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+  backgroundColor: 'white',
+}));
+
+const TransactionDetails = styled('div')({
+  flex: 1,
+});
+
+const AmountContainer = styled('div')({
+  textAlign: 'right',
+  minWidth: '98px',
+  marginRight: '3px', 
+});
+
+// eslint-disable-next-line react/prop-types
 const History = ({ userId }) => {
-  const classes = useStyles();
   const [transactions, setTransactions] = useState([]);
   const [filterType, setFilterType] = useState('');
   const [sortOrder, setSortOrder] = useState('Ascending');
@@ -71,13 +73,13 @@ const History = ({ userId }) => {
 
   const handleEdit = async (editedTransaction) => {
     try {
-      await axios.patch(`https://expensetracker-32wt.onrender.com/users/${userId}/data/${editedTransaction.id}`, editedTransaction);
+      await axios.put(`https://expensetracker-32wt.onrender.com/users/${userId}/data/${editedTransaction.transactionID}`, editedTransaction);
       fetchTransactions(); // Refresh list after edit
     } catch (error) {
       console.error("Error editing transaction", error);
     }
   };
-
+  
   const handleDelete = async (transactionId) => {
     try {
       await axios.delete(`https://expensetracker-32wt.onrender.com/users/${userId}/data/${transactionId}`);
@@ -111,8 +113,8 @@ const History = ({ userId }) => {
   );
 
   return (
-    <div className={classes.mainContainer}>
-      <div className={classes.sortContainer}>
+    <MainContainer>
+      <SortContainer>
         <select onChange={(e) => setFilterType(e.target.value)}>
           <option value="">All</option>
           <option value="Income">Income</option>
@@ -123,12 +125,12 @@ const History = ({ userId }) => {
           <option value="Ascending">Ascending</option>
           <option value="Descending">Descending</option>
         </select>
-      </div>
+      </SortContainer>
 
-      <Card className={classes.mainCard}>
+      <MainCard>
         {filteredTransactions.map(transaction => (
-          <Card key={transaction.id} className={classes.transactionCard}>
-            <div className={classes.transactionDetails}>
+          <TransactionCard key={transaction.transactionID}>
+            <TransactionDetails>
               <CardContent>
                 <Typography variant="h4" component="h3">
                   {transaction.category}
@@ -140,8 +142,8 @@ const History = ({ userId }) => {
                   {transaction.type}
                 </Typography>
               </CardContent>
-            </div>
-            <div className={classes.amountContainer}>
+            </TransactionDetails>
+            <AmountContainer>
               <CardContent>
                 <Typography variant="h6" component="h3" style={{ textAlign: 'left', color: transaction.type === 'Income' ? 'green' : 'red' }}>
                   {transaction.type === 'Income' ? '+' : '-'}{transaction.amount}
@@ -149,14 +151,14 @@ const History = ({ userId }) => {
                 <IconButton onClick={() => handleEditClick(transaction)}>
                   <EditNoteIcon />
                 </IconButton>
-                <IconButton onClick={() => handleDelete(transaction.id)}>
+                <IconButton onClick={() => handleDelete(transaction.transactionID)}>
                   <DeleteIcon />
                 </IconButton>
               </CardContent>
-            </div>
-          </Card>
+            </AmountContainer>
+          </TransactionCard>
         ))}
-      </Card>
+      </MainCard>
 
       <EditTransactionModal
         open={openEditModal}
@@ -164,7 +166,7 @@ const History = ({ userId }) => {
         transaction={selectedTransaction}
         handleEdit={handleEdit}
       />
-    </div>
+    </MainContainer>
   );
 };
 

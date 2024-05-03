@@ -1,22 +1,26 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
-const Analytics = () => {
+const Analytics = ({userId}) => {
     const [incomeData, setIncomeData] = useState([]);
     const [expenseData, setExpenseData] = useState([]);
 
     useEffect(() => {
-        // Fetch data from your API (replace with your actual API endpoint)
-        axios.get('https://expensetracker-32wt.onrender.com/users/e19b/data')
+        axios.get(`https://expensetracker-32wt.onrender.com/users/${userId}/data`)
             .then(response => {
-                const income = response.data.filter(item => item.type === 'Income');
-                const expense = response.data.filter(item => item.type === 'Expense');
-                setIncomeData(income);
-                setExpenseData(expense);
+                const user = response.data.find(user => user.id === userId);
+                if (user && Array.isArray(user.data)) {
+                    const income = user.data.filter(item => item.type === 'Income');
+                    const expense = user.data.filter(item => item.type === 'Expense');
+                    setIncomeData(income);
+                    setExpenseData(expense);
+                }
             })
             .catch(error => console.error('Error fetching data:', error));
-    }, []);
+    }, [userId]);
+
 
     const incomeChartConfig = {
         labels: incomeData.map(item => item.category),
