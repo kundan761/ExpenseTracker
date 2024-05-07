@@ -46,15 +46,15 @@ Expense Tracker is a simple, user-friendly app that helps you track and manage y
    ![Screenshot](src/assets/Screenshot%202024-05-08%20013823.png)
 
 # Signup page 
-   ![Screenshot](src/assets/Screenshot 2024-05-08 014800.png)
+   ![Screenshot](src/assets/Screenshot%2024-05-08%014800.png)
 
 # Tracker 
 
-   ![Screenshot](src/assets/Screenshot 2024-05-08 014951.png)
+   ![Screenshot](src/assets/Screenshot%2024-05-08%014951.png)
 
 # History
 
-   ![Screenshot](src/assets/Screenshot 2024-05-08 015049.png)
+   ![Screenshot](src/assets/Screenshot%2024-05-08%015049.png)
 
 ## Contributing
 
