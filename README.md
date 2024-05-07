@@ -41,20 +41,20 @@ Expense Tracker is a simple, user-friendly app that helps you track and manage y
    ```
    https://expense-gamma-ashy.vercel.app/
    ```
-# HOMEPAGE 
+# Homepage 
 
    ![Screenshot](src/assets/Screenshot%202024-05-08%20013823.png)
 
-# SIGNUP PAGE 
-   ![Screenshot](src/assets/Screenshot%202024-05-08%20013823.png)
+# Signup page 
+   ![Screenshot](src/assets/Screenshot 2024-05-08 014800.png)
 
-# TRACKER 
+# Tracker 
 
-   ![Screenshot](src/assets/Screenshot%202024-05-08%20013823.png)
+   ![Screenshot](src/assets/Screenshot 2024-05-08 014951.png)
 
-# HISTORY
+# History
 
-   ![Screenshot](src/assets/Screenshot%202024-05-08%20013823.png)
+   ![Screenshot](src/assets/Screenshot 2024-05-08 015049.png)
 
 ## Contributing
 
