@@ -27,7 +27,7 @@ Expense Tracker is a simple, user-friendly app that helps you track and manage y
 
 1. Clone the repository
    ```
-   https://
+   https://github.com/kundan761/ExpenseTracker.git
    ```
 2. Install the dependencies
    ```
@@ -49,8 +49,4 @@ We welcome contributions from the community. Please read our contributing guidel
 ## License
 
 This project is licensed under the MIT License.
-
-## Contact
-
-For any queries or suggestions, please contact us at email support.
 
