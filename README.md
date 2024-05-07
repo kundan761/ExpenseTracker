@@ -1,8 +1,56 @@
-# React + Vite
+# Expense Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Introduction
 
-Currently, two official plugins are available:
+Expense Tracker is a simple, user-friendly app that helps you track and manage your expenses. It provides a clear overview of your personal finance and easy to understand analytics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+**User Registration and Login**
+- New users can register with their email.
+- Existing users can login with their credentials.
+
+**Expense Tracking**
+- Users can add new expenses by entering the amount, category, and date.
+- Expenses can be edited or deleted as needed.
+
+**Analytics**
+- The app provides insightful analytics about your spending.
+- View your expenses grouped by categories.
+- Understand your spending habits over time with our trend analysis feature.
+
+**Expense History**
+- Users can view their past expenses.
+- The history section provides a detailed list of all past expenses and allows users to filter by date and category.
+
+## Getting Started
+
+1. Clone the repository
+   ```
+   https://
+   ```
+2. Install the dependencies
+   ```
+   npm install
+   ```
+3. Run the application
+  ```
+  npm start
+  ```
+4. Deployed Link
+  ```
+  https://expense-gamma-ashy.vercel.app/
+  ```
+
+## Contributing
+
+We welcome contributions from the community. Please read our contributing guidelines before getting started.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any queries or suggestions, please contact us at email support.
+
