@@ -34,13 +34,13 @@ Expense Tracker is a simple, user-friendly app that helps you track and manage y
    npm install
    ```
 3. Run the application
-  ```
-  npm start
-  ```
+   ```
+   npm start
+   ```
 4. Deployed Link
-  ```
-  https://expense-gamma-ashy.vercel.app/
-  ```
+   ```
+   https://expense-gamma-ashy.vercel.app/
+   ```
 
 ## Contributing
 
